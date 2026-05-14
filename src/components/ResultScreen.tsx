@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+﻿import React, { useEffect, useState } from 'react'
 import type { Team } from '../types/game'
 import { playApplause } from '../utils/sounds'
 
@@ -6,7 +6,7 @@ const BLUE   = '#1565C0'
 const PINK   = '#E91E8C'
 const ORANGE = '#F97316'
 
-// ─── Cheering figure ────────────────────────────────────────────────────────
+// â”€â”€â”€ Cheering figure â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
   const isA = team === 'A'
   const id  = `ch_${team}_${index}`
@@ -58,50 +58,50 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
           </linearGradient>
         </defs>
 
-        {/* ── Shoes ── */}
+        {/* â”€â”€ Shoes â”€â”€ */}
         <ellipse cx="22" cy="149" rx="13" ry="5.5" fill="#111" />
         <ellipse cx="48" cy="149" rx="13" ry="5.5" fill="#0a0a0a" />
 
-        {/* ── Legs — slightly bent (jumping pose) ── */}
+        {/* â”€â”€ Legs â€” slightly bent (jumping pose) â”€â”€ */}
         <path d="M28 92 Q20 120 22 148"
               stroke={`url(#cpt_${id})`} strokeWidth="13" strokeLinecap="round" fill="none" />
         <path d="M42 92 Q50 120 48 146"
               stroke={`url(#cpt_${id})`} strokeWidth="13" strokeLinecap="round" fill="none" />
 
-        {/* ── Torso ── */}
+        {/* â”€â”€ Torso â”€â”€ */}
         <path d="M16 52 Q12 72 16 92 Q35 98 54 92 Q58 72 54 52 Q35 46 16 52Z"
               fill={`url(#csh_${id})`} />
         {/* Shirt collar */}
         <path d="M27 52 L35 60 L43 52" fill="none" stroke={shirtDark} strokeWidth="2" strokeLinejoin="round" />
 
-        {/* ── Arms raised in V-for-victory ── */}
+        {/* â”€â”€ Arms raised in V-for-victory â”€â”€ */}
         <path d="M17 60 Q5 38 1 16"
               stroke={`url(#csk_${id})`} strokeWidth="10" strokeLinecap="round" fill="none" />
         <path d="M53 60 Q65 38 69 16"
               stroke={`url(#csk_${id})`} strokeWidth="10" strokeLinecap="round" fill="none" />
 
-        {/* ── Hands ── */}
+        {/* â”€â”€ Hands â”€â”€ */}
         <ellipse cx="1"  cy="14" rx="8" ry="9" fill={`url(#csk_${id})`} />
         <ellipse cx="69" cy="14" rx="8" ry="9" fill={`url(#csk_${id})`} />
 
-        {/* ── Neck ── */}
+        {/* â”€â”€ Neck â”€â”€ */}
         <ellipse cx="35" cy="44" rx="7" ry="9" fill={`url(#csk_${id})`} />
 
-        {/* ── Head ── */}
+        {/* â”€â”€ Head â”€â”€ */}
         <ellipse cx="35" cy="26" rx="15" ry="17" fill={`url(#csk_${id})`}
                  transform="rotate(-4, 35, 26)" />
 
-        {/* ── Hair ── */}
+        {/* â”€â”€ Hair â”€â”€ */}
         <ellipse cx="35" cy="13" rx="16" ry="11" fill={hair} />
         <path d="M19 21 Q35 7 51 21 Q50 11 35 8 Q20 11 19 21Z" fill={hair} />
         {/* Ear */}
         <ellipse cx="19" cy="27" rx="3.5" ry="5" fill={sd} />
 
-        {/* ── Happy face ── */}
+        {/* â”€â”€ Happy face â”€â”€ */}
         {/* Eye whites */}
         <ellipse cx="27" cy="23" rx="4"   ry="3.5" fill="white" />
         <ellipse cx="43" cy="23" rx="4"   ry="3.5" fill="white" />
-        {/* Pupils — looking up, excited */}
+        {/* Pupils â€” looking up, excited */}
         <circle cx="27"   cy="21.5" r="2.2" fill="#0a0a0a" />
         <circle cx="43"   cy="21.5" r="2.2" fill="#0a0a0a" />
         {/* Eye shine */}
@@ -119,14 +119,14 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
         {/* Nose */}
         <path d="M33 28 Q35 31 37 28" stroke={sd} strokeWidth="1.5" fill="none" strokeLinecap="round" />
 
-        {/* ── Headband (team color) ── */}
+        {/* â”€â”€ Headband (team color) â”€â”€ */}
         <path d="M19 17 Q35 10 51 17" stroke={shirtColor} strokeWidth="4.5"
               fill="none" strokeLinecap="round" opacity="0.9" />
 
         {/* Head shine */}
         <ellipse cx="26" cy="15" rx="7" ry="4" fill="white" opacity="0.10" />
 
-        {/* ── Accessories (alternate per figure) ── */}
+        {/* â”€â”€ Accessories (alternate per figure) â”€â”€ */}
         {hasStar && (
           /* Star burst from left raised hand */
           <g transform="translate(1, 6)">
@@ -167,7 +167,7 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
   )
 }
 
-// ─── Confetti ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Confetti â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Piece {
   id: number; left: number; color: string; delay: number; duration: number; size: number
   shape: 'square' | 'circle' | 'triangle'
@@ -185,7 +185,7 @@ function makeConfetti(n = 80): Piece[] {
   }))
 }
 
-// ─── Props ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Props â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Props {
   winner: Team | 'draw'
   winReason: 'rope' | 'timer' | 'questions' | null
@@ -204,7 +204,7 @@ const REASON_TEXT: Record<string, string> = {
   questions: 'by answering the most questions!',
 }
 
-// ─── Main screen ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Main screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function ResultScreen({
   winner, winReason, teamAName, teamBName, scoreA, scoreB, soundEnabled, onPlayAgain, onMainMenu,
 }: Props) {
@@ -236,7 +236,7 @@ export default function ResultScreen({
     >
       {/* Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ opacity: 0.06 }}>
-        <img src="/school-logo.png" alt="" style={{ width: '62vmin', objectFit: 'contain' }} />
+        <img src={import.meta.env.BASE_URL + "school-logo.png"} alt="" style={{ width: '62vmin', objectFit: 'contain' }} />
       </div>
 
       {/* Winner glow */}
@@ -259,7 +259,7 @@ export default function ResultScreen({
         }} />
       ))}
 
-      {/* ── CHEERING FIGURES ROW ── */}
+      {/* â”€â”€ CHEERING FIGURES ROW â”€â”€ */}
       <div
         className="relative z-10 flex items-end justify-center gap-1 pt-6 px-4 w-full"
         style={{
@@ -273,7 +273,7 @@ export default function ResultScreen({
         ))}
       </div>
 
-      {/* ── RESULT CARD ── */}
+      {/* â”€â”€ RESULT CARD â”€â”€ */}
       <div className="flex-1 flex items-center justify-center px-4 py-6 w-full">
         <div
           className={`flex flex-col items-center gap-5 rounded-3xl p-8 max-w-lg w-full transition-all duration-500 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
@@ -286,7 +286,7 @@ export default function ResultScreen({
         >
           {/* Trophy / icon */}
           <div className="text-7xl" style={{ animation: 'cheerBounce 0.9s ease-in-out 0.3s infinite' }}>
-            {winner === 'draw' ? '🤝' : '🏆'}
+            {winner === 'draw' ? 'ðŸ¤' : 'ðŸ†'}
           </div>
 
           {winner === 'draw' ? (
@@ -337,12 +337,12 @@ export default function ResultScreen({
                 boxShadow: `0 0 28px ${BLUE}55, 0 0 14px ${PINK}33`,
                 border: `1px solid ${BLUE}55`,
               }}>
-              🔄 Play Again
+              ðŸ”„ Play Again
             </button>
             <button onClick={onMainMenu}
               className="w-full py-3 font-semibold text-lg text-gray-400 rounded-2xl transition-all hover:text-white hover:scale-[1.01] active:scale-95 focus:outline-none"
               style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              🏠 Main Menu
+              ðŸ  Main Menu
             </button>
           </div>
         </div>

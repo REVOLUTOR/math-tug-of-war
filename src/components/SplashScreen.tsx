@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 
 const BLUE   = '#1565C0'
 const PINK   = '#E91E8C'
@@ -16,7 +16,7 @@ export default function SplashScreen({ onStart }: Props) {
     >
       {/* Logo watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ opacity: 0.065 }}>
-        <img src="/school-logo.png" alt="" style={{ width: '62vmin', objectFit: 'contain' }} />
+        <img src={import.meta.env.BASE_URL + "school-logo.png"} alt="" style={{ width: '62vmin', objectFit: 'contain' }} />
       </div>
 
       {/* School colour radial glows */}
@@ -30,7 +30,7 @@ export default function SplashScreen({ onStart }: Props) {
       {/* Mini rope display */}
       <div className="z-10 flex items-center mb-5">
         <div className="flex items-center">
-          {['🧑‍🎓','🧒','👦'].map((e, i) => (
+          {['ðŸ§‘â€ðŸŽ“','ðŸ§’','ðŸ‘¦'].map((e, i) => (
             <span key={i} className="text-3xl select-none"
                   style={{ transform: `rotate(${-8 + i * 3}deg)`, marginRight: -5 }}>{e}</span>
           ))}
@@ -49,7 +49,7 @@ export default function SplashScreen({ onStart }: Props) {
                }} />
         </div>
         <div className="flex items-center">
-          {['👧','🧒','🧑‍🎓'].map((e, i) => (
+          {['ðŸ‘§','ðŸ§’','ðŸ§‘â€ðŸŽ“'].map((e, i) => (
             <span key={i} className="text-3xl select-none"
                   style={{ transform: `rotate(${8 - i * 3}deg)`, marginLeft: -5 }}>{e}</span>
           ))}
@@ -75,7 +75,7 @@ export default function SplashScreen({ onStart }: Props) {
              border: '1px solid rgba(255,255,255,0.12)',
              boxShadow: `0 0 24px ${BLUE}22`,
            }}>
-        <img src="/school-logo.png" alt="Bright Schools" style={{ width: 52, height: 52, objectFit: 'contain' }} />
+        <img src={import.meta.env.BASE_URL + "school-logo.png"} alt="Bright Schools" style={{ width: 52, height: 52, objectFit: 'contain' }} />
         <div>
           <div className="text-sm font-black text-white leading-tight">Bright English Medium</div>
           <div className="text-xs font-medium" style={{ color: ORANGE }}>Pre &amp; Primary School</div>
@@ -93,11 +93,11 @@ export default function SplashScreen({ onStart }: Props) {
           border: `1px solid ${BLUE}66`,
         }}
       >
-        ⚔️ Start Game
+        âš”ï¸ Start Game
       </button>
 
       <p className="z-10 mt-4 text-xs text-gray-600 tracking-widest uppercase">
-        2 players · single screen · all ages
+        2 players Â· single screen Â· all ages
       </p>
 
       <footer className="absolute bottom-4 w-full text-center text-xs text-gray-700 z-10">
