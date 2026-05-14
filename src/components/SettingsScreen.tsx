@@ -21,7 +21,9 @@ const Q_OPTIONS = [5, 10, 20, 30]
 export default function SettingsScreen({ onStart, onBack }: Props) {
   const [teamAName,    setTeamAName]    = useState('Team A')
   const [teamBName,    setTeamBName]    = useState('Team B')
-  const [inputMode,    setInputMode]    = useState<InputMode>('dual-keyboard')
+  const [inputMode,    setInputMode]    = useState<InputMode>(
+    ('ontouchstart' in window || navigator.maxTouchPoints > 0) ? 'touchscreen' : 'dual-keyboard'
+  )
   const [difficulty,   setDifficulty]   = useState<Difficulty>('easy')
   const [timerSec,     setTimerSec]     = useState(60)
   const [useCustomT,   setUseCustomT]   = useState(false)

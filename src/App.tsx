@@ -7,10 +7,12 @@ import GameScreen from './components/GameScreen'
 import ResultScreen from './components/ResultScreen'
 import { useGameEngine } from './hooks/useGameEngine'
 
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+
 const DEFAULT_SETTINGS: GameSettings = {
   teamAName:     'Team A',
   teamBName:     'Team B',
-  inputMode:     'dual-keyboard',
+  inputMode:     isTouchDevice ? 'touchscreen' : 'dual-keyboard',
   difficulty:    'easy',
   operations:    ['addition'],
   timerSeconds:  60,

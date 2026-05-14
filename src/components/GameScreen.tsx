@@ -115,24 +115,24 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
 
         {/* Team A */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-2xl transition-all duration-200"
+        <div className="flex items-center gap-1.5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-2xl transition-all duration-200"
              style={{
-               minWidth: 155,
+               minWidth: 'clamp(80px, 25vw, 155px)',
                background: state.flashA ? 'rgba(34,197,94,0.25)' : `${A_COLOR}18`,
                border: `1.5px solid ${state.flashA ? '#22c55e' : A_COLOR}55`,
                boxShadow: `0 0 18px ${state.flashA ? '#22c55e' : A_COLOR}${state.flashA ? '88' : '22'}`,
              }}>
-          <div className="w-2 h-9 rounded-full" style={{ background: A_COLOR, boxShadow: `0 0 8px ${A_COLOR}` }} />
+          <div className="w-1.5 sm:w-2 h-7 sm:h-9 rounded-full" style={{ background: A_COLOR, boxShadow: `0 0 8px ${A_COLOR}` }} />
           <div>
-            <div className="text-xs font-bold uppercase tracking-widest" style={{ color: A_COLOR }}>{state.settings.teamAName}</div>
-            <div className="text-4xl font-black tabular-nums text-white leading-tight">{state.scoreA}</div>
+            <div className="text-xs font-bold uppercase tracking-widest truncate max-w-[70px] sm:max-w-none" style={{ color: A_COLOR }}>{state.settings.teamAName}</div>
+            <div className="text-2xl sm:text-4xl font-black tabular-nums text-white leading-tight">{state.scoreA}</div>
           </div>
         </div>
 
         {/* Center */}
         <div className="flex flex-col items-center gap-0.5">
           <div
-            className={`text-5xl font-black tabular-nums leading-none transition-all ${timeCritical ? 'pulse-red' : 'text-white'}`}
+            className={`text-3xl sm:text-5xl font-black tabular-nums leading-none transition-all ${timeCritical ? 'pulse-red' : 'text-white'}`}
             style={timeCritical ? {} : { textShadow: '0 0 24px rgba(255,255,255,0.35)' }}
           >
             {formatTime(state.timeLeft)}
@@ -165,19 +165,19 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
         </div>
 
         {/* Team B */}
-        <div className="flex items-center gap-2 px-4 py-2 rounded-2xl transition-all duration-200"
+        <div className="flex items-center gap-1.5 px-2 sm:px-4 py-1.5 sm:py-2 rounded-2xl transition-all duration-200"
              style={{
-               minWidth: 155,
+               minWidth: 'clamp(80px, 25vw, 155px)',
                justifyContent: 'flex-end',
                background: state.flashB ? 'rgba(34,197,94,0.25)' : `${B_COLOR}18`,
                border: `1.5px solid ${state.flashB ? '#22c55e' : B_COLOR}55`,
                boxShadow: `0 0 18px ${state.flashB ? '#22c55e' : B_COLOR}${state.flashB ? '88' : '22'}`,
              }}>
           <div className="text-right">
-            <div className="text-xs font-bold uppercase tracking-widest" style={{ color: B_COLOR }}>{state.settings.teamBName}</div>
-            <div className="text-4xl font-black tabular-nums text-white leading-tight">{state.scoreB}</div>
+            <div className="text-xs font-bold uppercase tracking-widest truncate max-w-[70px] sm:max-w-none" style={{ color: B_COLOR }}>{state.settings.teamBName}</div>
+            <div className="text-2xl sm:text-4xl font-black tabular-nums text-white leading-tight">{state.scoreB}</div>
           </div>
-          <div className="w-2 h-9 rounded-full" style={{ background: B_COLOR, boxShadow: `0 0 8px ${B_COLOR}` }} />
+          <div className="w-1.5 sm:w-2 h-7 sm:h-9 rounded-full" style={{ background: B_COLOR, boxShadow: `0 0 8px ${B_COLOR}` }} />
         </div>
       </div>
 
@@ -206,7 +206,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
 
         {/* Question panel */}
         <div className="flex justify-center">
-          <div className="px-10 py-4 rounded-3xl"
+          <div className="px-4 sm:px-10 py-3 sm:py-4 rounded-3xl"
                style={{
                  background: 'rgba(255,255,255,0.05)',
                  border: '1.5px solid rgba(255,255,255,0.10)',

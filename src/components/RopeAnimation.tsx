@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Props {
   position: number   // -5 to +5
@@ -191,6 +191,13 @@ function PullerFigure({
 
 // ─── Main component ──────────────────────────────────────────────────────────
 export default function RopeAnimation({ position, teamAName, teamBName }: Props) {
+  const [figCount, setFigCount] = useState(() => window.innerWidth < 640 ? 1 : 3)
+
+  useEffect(() => {
+    const handler = () => setFigCount(window.innerWidth < 640 ? 1 : 3)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
   // Knot position: 0%=left(B win), 100%=right(A win), 50%=center
   // Rope range is ±15 → map to 0–100%
   const knotPct = 50 + position * (50 / 15)
@@ -238,7 +245,7 @@ export default function RopeAnimation({ position, teamAName, teamBName }: Props)
         style={{
           background: 'linear-gradient(180deg, #0a1628 0%, #0f1f10 60%, #1a3010 100%)',
           boxShadow: `0 0 40px 8px rgba(21,101,192,0.15), 0 0 40px 8px rgba(233,30,140,0.10)`,
-          minHeight: 220,
+          minHeight: figCount === 1 ? 160 : 220,
         }}
       >
         {/* Side glow panels */}
@@ -255,10 +262,10 @@ export default function RopeAnimation({ position, teamAName, teamBName }: Props)
         <div className="flex items-end justify-between px-1 pt-4 pb-2"
              style={{ minHeight: 200 }}>
 
-          {/* Team B figures — RIGHT side, facing LEFT, ordered front→back (left to right) */}
+          {/* Team A figures — LEFT side */}
           <div className="flex items-end" style={{ gap: -12 }}>
-            {[0, 1, 2].map(i => (
-              <div key={i} style={{ marginLeft: i === 0 ? 0 : -14, zIndex: 3 - i }}>
+            {Array.from({ length: figCount }, (_, i) => (
+              <div key={i} style={{ marginLeft: i === 0 ? 0 : -14, zIndex: figCount - i }}>
                 <PullerFigure team="A" index={i} ropePosition={position} />
               </div>
             ))}
@@ -405,8 +412,8 @@ export default function RopeAnimation({ position, teamAName, teamBName }: Props)
 
           {/* Team B figures — RIGHT side, front is closest to rope */}
           <div className="flex items-end" style={{ flexDirection: 'row-reverse' }}>
-            {[0, 1, 2].map(i => (
-              <div key={i} style={{ marginRight: i === 0 ? 0 : -14, zIndex: 3 - i }}>
+            {Array.from({ length: figCount }, (_, i) => (
+              <div key={i} style={{ marginRight: i === 0 ? 0 : -14, zIndex: figCount - i }}>
                 <PullerFigure team="B" index={i} ropePosition={position} />
               </div>
             ))}
