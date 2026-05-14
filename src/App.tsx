@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 
 import type { GameScreen as GameScreenType, GameSettings } from './types/game'
+import PinScreen from './components/PinScreen'
 import SplashScreen from './components/SplashScreen'
 import SettingsScreen from './components/SettingsScreen'
 import GameScreen from './components/GameScreen'
@@ -20,6 +21,7 @@ const DEFAULT_SETTINGS: GameSettings = {
 }
 
 export default function App() {
+  const [unlocked, setUnlocked] = useState(() => sessionStorage.getItem('mtow_auth') === '1')
   const [screen, setScreen] = useState<GameScreenType>('splash')
   const [lastSettings, setLastSettings] = useState<GameSettings>(DEFAULT_SETTINGS)
   const [soundEnabled, setSoundEnabled] = useState(true)
@@ -40,6 +42,10 @@ export default function App() {
     const t = setTimeout(() => setScreen('result'), 600)
     return () => clearTimeout(t)
   }, [state.winner])
+
+  if (!unlocked) {
+    return <PinScreen onUnlock={() => setUnlocked(true)} />
+  }
 
   return (
     <div className="min-h-screen">

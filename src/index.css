@@ -123,6 +123,16 @@
   75%       { transform: translateY(-14px) rotate(4deg)  scale(1.03); }
 }
 
+@keyframes pinShake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+
 @keyframes cheerWave {
   0%, 100% { transform: rotate(0deg);   }
   30%       { transform: rotate(-15deg); }
