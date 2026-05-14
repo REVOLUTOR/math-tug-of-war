@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import type { GameState, Team } from '../types/game'
 import QuestionPanel from './QuestionPanel'
 import RopeAnimation from './RopeAnimation'
@@ -102,7 +102,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
         <img src={import.meta.env.BASE_URL + "school-logo.png"} alt="" style={{ width: '55vmin', objectFit: 'contain' }} />
       </div>
 
-      {/* Radial corner glows â€” school colours */}
+      {/* Radial corner glows - school colours */}
       <div className="absolute inset-0 pointer-events-none z-0"
            style={{ background: `radial-gradient(ellipse at top left, ${A_COLOR}22 0%, transparent 55%)` }} />
       <div className="absolute inset-0 pointer-events-none z-0"
@@ -110,7 +110,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
       <div className="absolute inset-0 pointer-events-none z-0"
            style={{ background: `radial-gradient(ellipse at bottom center, ${ORANGE}14 0%, transparent 50%)` }} />
 
-      {/* â”€â”€ TOP BAR â”€â”€ */}
+      {/* TOP BAR */}
       <div className="relative z-10 flex items-center justify-between px-4 py-3"
            style={{ background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
 
@@ -142,24 +142,24 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
           {qProgress && (
             <div className="text-xs font-bold px-3 py-0.5 rounded-full"
                  style={{ background: `${ORANGE}22`, color: ORANGE, border: `1px solid ${ORANGE}55` }}>
-              ðŸŽ¯ {qProgress} questions
+              🎯 {qProgress} questions
             </div>
           )}
 
           <div className="flex gap-2 mt-1">
             {state.isPaused ? (
               <button onClick={resume} className="px-4 py-1 bg-green-500 hover:bg-green-400 text-white text-sm font-bold rounded-lg transition-all">
-                â–¶ Resume
+                ▶ Resume
               </button>
             ) : (
               <button onClick={pause} className="px-4 py-1 text-sm font-bold rounded-lg transition-all"
                 style={{ background: 'rgba(255,255,255,0.10)', color: 'rgba(255,255,255,0.65)' }}>
-                â¸ Pause
+                ⏸ Pause
               </button>
             )}
             <button onClick={onToggleSound} className="px-3 py-1 text-sm rounded-lg transition-all"
               style={{ background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)' }}>
-              {soundEnabled ? 'ðŸ”Š' : 'ðŸ”‡'}
+              {soundEnabled ? '🔊' : '🔇'}
             </button>
           </div>
         </div>
@@ -187,7 +187,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
              style={{ background: 'rgba(0,0,0,0.78)', backdropFilter: 'blur(8px)' }}>
           <div className="flex flex-col items-center gap-5 p-10 rounded-3xl"
                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)' }}>
-            <span className="text-6xl">â¸</span>
+            <span className="text-6xl">⏸</span>
             <h2 className="text-3xl font-black text-white">Paused</h2>
             <p className="text-gray-400">Teacher can review or discuss</p>
             {qProgress && (
@@ -195,13 +195,13 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
             )}
             <button onClick={resume} className="px-10 py-3 text-white text-xl font-bold rounded-2xl transition-all hover:scale-105"
               style={{ background: `linear-gradient(135deg, ${A_COLOR}, #0a2a70)`, boxShadow: `0 0 20px ${A_COLOR}55` }}>
-              â–¶ Resume
+              ▶ Resume
             </button>
           </div>
         </div>
       )}
 
-      {/* â”€â”€ MAIN AREA â”€â”€ */}
+      {/* MAIN AREA */}
       <div className="flex-1 flex flex-col z-10 px-3 pt-2 pb-2 gap-2">
 
         {/* Question panel */}
@@ -221,7 +221,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
           <div className="flex gap-3">
             <div className={`flex-1 flex flex-col items-center gap-1 ${state.shakeA ? 'flash-red-shake' : ''}`}>
               <label className="text-xs font-bold uppercase tracking-widest" style={{ color: A_COLOR }}>
-                {state.settings.teamAName} â€” type &amp; Enter
+                {state.settings.teamAName} — type &amp; Enter
               </label>
               <div className="flex w-full max-w-xs gap-2">
                 <input ref={inputARef} type="number"
@@ -232,13 +232,13 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
                   placeholder="?" disabled={!!state.winner || state.isPaused} autoComplete="off" />
                 <button onClick={() => handleSubmitA(inputA)} disabled={!!state.winner || state.isPaused}
                   className="px-4 rounded-xl font-bold text-white transition-all active:scale-95"
-                  style={{ background: A_COLOR, boxShadow: `0 0 10px ${A_COLOR}55` }}>âœ“</button>
+                  style={{ background: A_COLOR, boxShadow: `0 0 10px ${A_COLOR}55` }}>✓</button>
               </div>
             </div>
 
             <div className={`flex-1 flex flex-col items-center gap-1 ${state.shakeB ? 'flash-red-shake' : ''}`}>
               <label className="text-xs font-bold uppercase tracking-widest" style={{ color: B_COLOR }}>
-                {state.settings.teamBName} â€” numpad + Enter
+                {state.settings.teamBName} — numpad + Enter
               </label>
               <div className="flex w-full max-w-xs gap-2">
                 <div className="flex-1 rounded-xl px-4 py-3 text-2xl font-black text-center text-white"
@@ -247,9 +247,9 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
                 </div>
                 <button onClick={() => handleSubmitB(inputB)} disabled={!!state.winner || state.isPaused}
                   className="px-4 rounded-xl font-bold text-white transition-all active:scale-95"
-                  style={{ background: B_COLOR, boxShadow: `0 0 10px ${B_COLOR}55` }}>âœ“</button>
+                  style={{ background: B_COLOR, boxShadow: `0 0 10px ${B_COLOR}55` }}>✓</button>
               </div>
-              <span className="text-xs text-gray-600">Numpad digits Â· Enter = submit Â· . = clear</span>
+              <span className="text-xs text-gray-600">Numpad digits · Enter = submit · . = clear</span>
             </div>
           </div>
         ) : (
@@ -270,7 +270,7 @@ export default function GameScreen({ state, submitAnswer, pause, resume, soundEn
         {questionLimit && (
           <div className="flex items-center gap-2 px-1">
             <span className="text-xs font-semibold" style={{ color: ORANGE, minWidth: 90 }}>
-              ðŸŽ¯ {totalAnswered}/{questionLimit} Qs
+              🎯 {totalAnswered}/{questionLimit} Qs
             </span>
             <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.08)' }}>
               <div className="h-full rounded-full transition-all duration-300"

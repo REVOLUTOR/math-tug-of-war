@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { Team } from '../types/game'
 import { playApplause } from '../utils/sounds'
 
@@ -6,7 +6,6 @@ const BLUE   = '#1565C0'
 const PINK   = '#E91E8C'
 const ORANGE = '#F97316'
 
-// â”€â”€â”€ Cheering figure â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
   const isA = team === 'A'
   const id  = `ch_${team}_${index}`
@@ -23,9 +22,8 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
   const sb   = skinBase[index % skinBase.length]
   const sd   = skinDark[index % skinDark.length]
 
-  const delay = index * 0.14  // stagger each figure's bounce
+  const delay = index * 0.14
 
-  // Alternate small accessories
   const hasStar      = index % 3 === 0
   const hasStreamers = index % 3 === 1
 
@@ -58,50 +56,50 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
           </linearGradient>
         </defs>
 
-        {/* â”€â”€ Shoes â”€â”€ */}
+        {/* Shoes */}
         <ellipse cx="22" cy="149" rx="13" ry="5.5" fill="#111" />
         <ellipse cx="48" cy="149" rx="13" ry="5.5" fill="#0a0a0a" />
 
-        {/* â”€â”€ Legs â€” slightly bent (jumping pose) â”€â”€ */}
+        {/* Legs - slightly bent (jumping pose) */}
         <path d="M28 92 Q20 120 22 148"
               stroke={`url(#cpt_${id})`} strokeWidth="13" strokeLinecap="round" fill="none" />
         <path d="M42 92 Q50 120 48 146"
               stroke={`url(#cpt_${id})`} strokeWidth="13" strokeLinecap="round" fill="none" />
 
-        {/* â”€â”€ Torso â”€â”€ */}
+        {/* Torso */}
         <path d="M16 52 Q12 72 16 92 Q35 98 54 92 Q58 72 54 52 Q35 46 16 52Z"
               fill={`url(#csh_${id})`} />
         {/* Shirt collar */}
         <path d="M27 52 L35 60 L43 52" fill="none" stroke={shirtDark} strokeWidth="2" strokeLinejoin="round" />
 
-        {/* â”€â”€ Arms raised in V-for-victory â”€â”€ */}
+        {/* Arms raised in V-for-victory */}
         <path d="M17 60 Q5 38 1 16"
               stroke={`url(#csk_${id})`} strokeWidth="10" strokeLinecap="round" fill="none" />
         <path d="M53 60 Q65 38 69 16"
               stroke={`url(#csk_${id})`} strokeWidth="10" strokeLinecap="round" fill="none" />
 
-        {/* â”€â”€ Hands â”€â”€ */}
+        {/* Hands */}
         <ellipse cx="1"  cy="14" rx="8" ry="9" fill={`url(#csk_${id})`} />
         <ellipse cx="69" cy="14" rx="8" ry="9" fill={`url(#csk_${id})`} />
 
-        {/* â”€â”€ Neck â”€â”€ */}
+        {/* Neck */}
         <ellipse cx="35" cy="44" rx="7" ry="9" fill={`url(#csk_${id})`} />
 
-        {/* â”€â”€ Head â”€â”€ */}
+        {/* Head */}
         <ellipse cx="35" cy="26" rx="15" ry="17" fill={`url(#csk_${id})`}
                  transform="rotate(-4, 35, 26)" />
 
-        {/* â”€â”€ Hair â”€â”€ */}
+        {/* Hair */}
         <ellipse cx="35" cy="13" rx="16" ry="11" fill={hair} />
         <path d="M19 21 Q35 7 51 21 Q50 11 35 8 Q20 11 19 21Z" fill={hair} />
         {/* Ear */}
         <ellipse cx="19" cy="27" rx="3.5" ry="5" fill={sd} />
 
-        {/* â”€â”€ Happy face â”€â”€ */}
+        {/* Happy face */}
         {/* Eye whites */}
         <ellipse cx="27" cy="23" rx="4"   ry="3.5" fill="white" />
         <ellipse cx="43" cy="23" rx="4"   ry="3.5" fill="white" />
-        {/* Pupils â€” looking up, excited */}
+        {/* Pupils - looking up, excited */}
         <circle cx="27"   cy="21.5" r="2.2" fill="#0a0a0a" />
         <circle cx="43"   cy="21.5" r="2.2" fill="#0a0a0a" />
         {/* Eye shine */}
@@ -119,16 +117,15 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
         {/* Nose */}
         <path d="M33 28 Q35 31 37 28" stroke={sd} strokeWidth="1.5" fill="none" strokeLinecap="round" />
 
-        {/* â”€â”€ Headband (team color) â”€â”€ */}
+        {/* Headband (team color) */}
         <path d="M19 17 Q35 10 51 17" stroke={shirtColor} strokeWidth="4.5"
               fill="none" strokeLinecap="round" opacity="0.9" />
 
         {/* Head shine */}
         <ellipse cx="26" cy="15" rx="7" ry="4" fill="white" opacity="0.10" />
 
-        {/* â”€â”€ Accessories (alternate per figure) â”€â”€ */}
+        {/* Accessories (alternate per figure) */}
         {hasStar && (
-          /* Star burst from left raised hand */
           <g transform="translate(1, 6)">
             {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, si) => (
               <line key={si}
@@ -141,7 +138,6 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
           </g>
         )}
         {hasStreamers && (
-          /* Colourful confetti strip from right hand */
           <g transform="translate(69, 6)">
             <rect x="-6" y="-9" width="12" height="5" rx="2"
                   fill={shirtColor} transform="rotate(25)" opacity="0.9" />
@@ -150,7 +146,6 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
           </g>
         )}
         {!hasStar && !hasStreamers && (
-          /* Sparkle from right raised hand */
           <g transform="translate(69, 6)">
             {[0, 60, 120, 180, 240, 300].map((deg, si) => (
               <line key={si}
@@ -167,7 +162,6 @@ function CheerFigure({ team, index }: { team: 'A' | 'B'; index: number }) {
   )
 }
 
-// â”€â”€â”€ Confetti â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Piece {
   id: number; left: number; color: string; delay: number; duration: number; size: number
   shape: 'square' | 'circle' | 'triangle'
@@ -185,7 +179,6 @@ function makeConfetti(n = 80): Piece[] {
   }))
 }
 
-// â”€â”€â”€ Props â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 interface Props {
   winner: Team | 'draw'
   winReason: 'rope' | 'timer' | 'questions' | null
@@ -204,7 +197,6 @@ const REASON_TEXT: Record<string, string> = {
   questions: 'by answering the most questions!',
 }
 
-// â”€â”€â”€ Main screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export default function ResultScreen({
   winner, winReason, teamAName, teamBName, scoreA, scoreB, soundEnabled, onPlayAgain, onMainMenu,
 }: Props) {
@@ -220,8 +212,6 @@ export default function ResultScreen({
   const winnerColor = winner === 'A' ? BLUE : winner === 'B' ? PINK : '#6B7280'
   const reasonText  = winReason ? (REASON_TEXT[winReason] ?? '') : ''
 
-  // Decide which figures to show at the top
-  // Winner: 6 of that team's colour. Draw: 3 + 3.
   const topFigures: Array<{ team: Team; idx: number }> = winner === 'draw'
     ? [
         { team: 'A', idx: 0 }, { team: 'A', idx: 1 }, { team: 'A', idx: 2 },
@@ -259,7 +249,7 @@ export default function ResultScreen({
         }} />
       ))}
 
-      {/* â”€â”€ CHEERING FIGURES ROW â”€â”€ */}
+      {/* CHEERING FIGURES ROW */}
       <div
         className="relative z-10 flex items-end justify-center gap-1 pt-6 px-4 w-full"
         style={{
@@ -273,7 +263,7 @@ export default function ResultScreen({
         ))}
       </div>
 
-      {/* â”€â”€ RESULT CARD â”€â”€ */}
+      {/* RESULT CARD */}
       <div className="flex-1 flex items-center justify-center px-4 py-6 w-full">
         <div
           className={`flex flex-col items-center gap-5 rounded-3xl p-8 max-w-lg w-full transition-all duration-500 ${visible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
@@ -286,7 +276,7 @@ export default function ResultScreen({
         >
           {/* Trophy / icon */}
           <div className="text-7xl" style={{ animation: 'cheerBounce 0.9s ease-in-out 0.3s infinite' }}>
-            {winner === 'draw' ? 'ðŸ¤' : 'ðŸ†'}
+            {winner === 'draw' ? '🤝' : '🏆'}
           </div>
 
           {winner === 'draw' ? (
@@ -337,12 +327,12 @@ export default function ResultScreen({
                 boxShadow: `0 0 28px ${BLUE}55, 0 0 14px ${PINK}33`,
                 border: `1px solid ${BLUE}55`,
               }}>
-              ðŸ”„ Play Again
+              🔄 Play Again
             </button>
             <button onClick={onMainMenu}
               className="w-full py-3 font-semibold text-lg text-gray-400 rounded-2xl transition-all hover:text-white hover:scale-[1.01] active:scale-95 focus:outline-none"
               style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              ðŸ  Main Menu
+              🏠 Main Menu
             </button>
           </div>
         </div>

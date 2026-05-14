@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import type { GameSettings, Difficulty, InputMode, Operation } from '../types/game'
 
 interface Props {
@@ -103,12 +103,12 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
       >
         {/* Header */}
         <div className="flex items-center gap-3">
-          <button onClick={onBack} className="text-gray-500 hover:text-white text-xl font-bold transition-colors w-8">â†</button>
+          <button onClick={onBack} className="text-gray-500 hover:text-white text-xl font-bold transition-colors w-8">←</button>
           <h2 className="text-3xl font-black text-white">Game Setup</h2>
           <img src={import.meta.env.BASE_URL + "school-logo.png"} alt="" className="ml-auto" style={{ width: 38, height: 38, objectFit: 'contain', opacity: 0.75 }} />
         </div>
 
-        {/* â”€â”€ Team names â”€â”€ */}
+        {/* Team names */}
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-xs font-bold uppercase tracking-widest" style={{ color: BLUE }}>Team A Name</label>
@@ -128,40 +128,40 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
           </div>
         </div>
 
-        {/* â”€â”€ Input mode â”€â”€ */}
+        {/* Input mode */}
         <div className="flex flex-col gap-3">
           <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Input Mode</label>
           <div className="grid grid-cols-2 gap-3">
             {chip(inputMode === 'dual-keyboard', BLUE, () => setInputMode('dual-keyboard'),
-              'âŒ¨ï¸ Dual Keyboard', 'Team A: keys  Â·  Team B: numpad')}
+              '⌨️ Dual Keyboard', 'Team A: keys  ·  Team B: numpad')}
             {chip(inputMode === 'touchscreen', BLUE, () => setInputMode('touchscreen'),
-              'ðŸ“± Touchscreen', 'On-screen pads for both teams')}
+              '📱 Touchscreen', 'On-screen pads for both teams')}
           </div>
         </div>
 
-        {/* â”€â”€ Difficulty â”€â”€ */}
+        {/* Difficulty */}
         <div className="flex flex-col gap-3">
           <label className="text-xs font-bold uppercase tracking-widest text-gray-400">Difficulty</label>
           <div className="grid grid-cols-3 gap-3">
-            {chip(difficulty === 'easy',   BLUE,   () => setDifficulty('easy'),   'ðŸŒ± Easy',   '1 â€“ 10')}
-            {chip(difficulty === 'medium', ORANGE, () => setDifficulty('medium'), 'âš¡ Medium', '1 â€“ 50')}
-            {chip(difficulty === 'hard',   PINK,   () => setDifficulty('hard'),   'ðŸ”¥ Hard',   '1 â€“ 100')}
+            {chip(difficulty === 'easy',   BLUE,   () => setDifficulty('easy'),   '🌱 Easy',   '1 – 10')}
+            {chip(difficulty === 'medium', ORANGE, () => setDifficulty('medium'), '⚡ Medium', '1 – 50')}
+            {chip(difficulty === 'hard',   PINK,   () => setDifficulty('hard'),   '🔥 Hard',   '1 – 100')}
           </div>
         </div>
 
-        {/* â”€â”€ Operations â”€â”€ */}
+        {/* Operations */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-400">ðŸ§® Operations</label>
+            <label className="text-xs font-bold uppercase tracking-widest text-gray-400">🧮 Operations</label>
             <span className="text-xs text-gray-600">Select one or more</span>
           </div>
 
           {/* Individual toggles */}
           <div className="grid grid-cols-3 gap-3">
             {([
-              { op: 'addition'       as Operation, label: 'âž• Addition',       sub: 'a + b', color: BLUE   },
-              { op: 'subtraction'    as Operation, label: 'âž– Subtraction',    sub: 'a âˆ’ b', color: ORANGE },
-              { op: 'multiplication' as Operation, label: 'âœ–ï¸ Multiply',       sub: 'a Ã— b', color: PINK   },
+              { op: 'addition'       as Operation, label: '➕ Addition',    sub: 'a + b', color: BLUE   },
+              { op: 'subtraction'    as Operation, label: '➖ Subtraction', sub: 'a − b', color: ORANGE },
+              { op: 'multiplication' as Operation, label: '✖️ Multiply',    sub: 'a × b', color: PINK   },
             ]).map(({ op, label, sub, color }) => {
               const active = operations.includes(op)
               return (
@@ -187,7 +187,7 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
                   {/* Active tick badge */}
                   {active && (
                     <span className="absolute top-1.5 right-2 text-xs font-black"
-                          style={{ color }}>âœ“</span>
+                          style={{ color }}>✓</span>
                   )}
                   <span className="font-bold text-sm leading-tight">{label}</span>
                   <span className="text-xs mt-0.5 opacity-60 font-mono">{sub}</span>
@@ -199,13 +199,13 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
           {/* Quick-pick combos */}
           <div className="flex flex-wrap gap-2">
             {([
-              { label: 'âž• Only',          ops: ['addition']                              as Operation[] },
-              { label: 'âž– Only',          ops: ['subtraction']                           as Operation[] },
-              { label: 'âœ–ï¸ Only',          ops: ['multiplication']                        as Operation[] },
-              { label: 'âž•âž– Mix',         ops: ['addition','subtraction']                as Operation[] },
-              { label: 'âž•âœ–ï¸ Mix',         ops: ['addition','multiplication']             as Operation[] },
-              { label: 'âž–âœ–ï¸ Mix',         ops: ['subtraction','multiplication']          as Operation[] },
-              { label: 'ðŸŽ² All Three',     ops: ['addition','subtraction','multiplication'] as Operation[] },
+              { label: '➕ Only',      ops: ['addition']                               as Operation[] },
+              { label: '➖ Only',      ops: ['subtraction']                            as Operation[] },
+              { label: '✖️ Only',      ops: ['multiplication']                         as Operation[] },
+              { label: '➕➖ Mix',     ops: ['addition','subtraction']                 as Operation[] },
+              { label: '➕✖️ Mix',     ops: ['addition','multiplication']              as Operation[] },
+              { label: '➖✖️ Mix',     ops: ['subtraction','multiplication']           as Operation[] },
+              { label: '🎲 All Three', ops: ['addition','subtraction','multiplication'] as Operation[] },
             ]).map(({ label, ops }) => {
               const active = ops.length === operations.length &&
                              ops.every(o => operations.includes(o))
@@ -234,19 +234,15 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
               : `Questions will randomly mix: ${operations.join(', ')}`}
             {operations.includes('multiplication') && (
               <span className="ml-1 text-yellow-700">
-                Â· Multiply range: {
-                  operations.includes('multiplication')
-                    ? `1â€“${['easy','medium','hard'].includes('easy') ? 5 : 12} Ã— 1â€“${['easy','medium','hard'].includes('easy') ? 5 : 12}`
-                    : ''
-                }
+                · Multiply range: {difficulty === 'easy' ? '1–5 × 1–5' : difficulty === 'medium' ? '1–10 × 1–10' : '1–12 × 1–12'}
               </span>
             )}
           </div>
         </div>
 
-        {/* â”€â”€ Timer â”€â”€ */}
+        {/* Timer */}
         <div className="flex flex-col gap-3">
-          <label className="text-xs font-bold uppercase tracking-widest text-gray-400">â± Timer</label>
+          <label className="text-xs font-bold uppercase tracking-widest text-gray-400">⏱ Timer</label>
           <div className="grid grid-cols-4 gap-2">
             {TIMER_OPTIONS.map(opt =>
               chip(!useCustomT && timerSec === opt.value, BLUE,
@@ -260,21 +256,21 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
                 className="rounded-xl px-4 py-2 w-32 text-lg font-semibold text-white focus:outline-none"
                 style={{ background: 'rgba(255,255,255,0.08)', border: '2px solid rgba(255,255,255,0.2)' }}
                 placeholder="seconds" value={customTimer} onChange={e => setCustomTimer(e.target.value)} />
-              <span className="text-sm text-gray-500">seconds (10 â€“ 600)</span>
+              <span className="text-sm text-gray-500">seconds (10 – 600)</span>
             </div>
           )}
         </div>
 
-        {/* â”€â”€ Number of questions â”€â”€ */}
+        {/* Number of questions */}
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-gray-400">ðŸŽ¯ Questions per Game</label>
+            <label className="text-xs font-bold uppercase tracking-widest text-gray-400">🎯 Questions per Game</label>
             <span className="text-xs px-2 py-0.5 rounded-full font-semibold" style={{ background: `${PINK}22`, color: PINK }}>
               optional
             </span>
           </div>
           <p className="text-xs text-gray-600 -mt-1">
-            Game ends when total correct answers reaches this number. Works alongside the timer â€” whichever triggers first wins.
+            Game ends when total correct answers reaches this number. Works alongside the timer — whichever triggers first wins.
           </p>
           <div className="grid grid-cols-5 gap-2">
             {/* None option */}
@@ -294,19 +290,19 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
                 className="rounded-xl px-4 py-2 w-32 text-lg font-semibold text-white focus:outline-none"
                 style={{ background: 'rgba(255,255,255,0.08)', border: `2px solid ${PINK}55` }}
                 placeholder="e.g. 15" value={customQ} onChange={e => setCustomQ(e.target.value)} />
-              <span className="text-sm text-gray-500">total correct answers (1 â€“ 200)</span>
+              <span className="text-sm text-gray-500">total correct answers (1 – 200)</span>
             </div>
           )}
         </div>
 
-        {/* â”€â”€ Summary badges â”€â”€ */}
+        {/* Summary badges */}
         <div className="flex flex-wrap gap-2 text-xs">
           {[
-            { label: difficulty.toUpperCase(),                                                                color: difficulty === 'easy' ? BLUE : difficulty === 'medium' ? ORANGE : PINK },
-            { label: operations.map(o => o === 'addition' ? 'âž•' : o === 'subtraction' ? 'âž–' : 'âœ–ï¸').join(' '), color: BLUE   },
+            { label: difficulty.toUpperCase(),                                                                          color: difficulty === 'easy' ? BLUE : difficulty === 'medium' ? ORANGE : PINK },
+            { label: operations.map(o => o === 'addition' ? '➕' : o === 'subtraction' ? '➖' : '✖️').join(' '),        color: BLUE   },
             { label: useCustomT ? `${customTimer || '?'}s` : TIMER_OPTIONS.find(o => o.value === timerSec)?.label ?? '', color: ORANGE },
-            { label: useCustomQ ? `${customQ || '?'} Qs` : qLimit ? `${qLimit} Qs` : 'Unlimited Qs',        color: PINK   },
-            { label: inputMode === 'dual-keyboard' ? 'Keyboard' : 'Touch',                                   color: ORANGE },
+            { label: useCustomQ ? `${customQ || '?'} Qs` : qLimit ? `${qLimit} Qs` : 'Unlimited Qs',                   color: PINK   },
+            { label: inputMode === 'dual-keyboard' ? 'Keyboard' : 'Touch',                                              color: ORANGE },
           ].map(b => b.label ? (
             <span key={b.label} className="px-3 py-1 rounded-full font-semibold"
                   style={{ background: `${b.color}22`, color: b.color, border: `1px solid ${b.color}44` }}>
@@ -315,7 +311,7 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
           ) : null)}
         </div>
 
-        {/* â”€â”€ Start button â”€â”€ */}
+        {/* Start button */}
         <button onClick={handleStart}
           className="py-4 font-black text-xl text-white rounded-2xl transition-all hover:scale-[1.02] active:scale-95 focus:outline-none"
           style={{
@@ -323,7 +319,7 @@ export default function SettingsScreen({ onStart, onBack }: Props) {
             boxShadow: `0 0 30px ${BLUE}55, 0 4px 20px rgba(0,0,0,0.4)`,
             border: `1px solid ${BLUE}66`,
           }}>
-          âš”ï¸ Start Match
+          ⚔️ Start Match
         </button>
       </div>
 

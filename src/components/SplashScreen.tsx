@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 
 const BLUE   = '#1565C0'
 const PINK   = '#E91E8C'
@@ -30,7 +30,7 @@ export default function SplashScreen({ onStart }: Props) {
       {/* Mini rope display */}
       <div className="z-10 flex items-center mb-5">
         <div className="flex items-center">
-          {['ðŸ§‘â€ðŸŽ“','ðŸ§’','ðŸ‘¦'].map((e, i) => (
+          {['🧑', '🧒', '👦'].map((e, i) => (
             <span key={i} className="text-3xl select-none"
                   style={{ transform: `rotate(${-8 + i * 3}deg)`, marginRight: -5 }}>{e}</span>
           ))}
@@ -49,7 +49,7 @@ export default function SplashScreen({ onStart }: Props) {
                }} />
         </div>
         <div className="flex items-center">
-          {['ðŸ‘§','ðŸ§’','ðŸ§‘â€ðŸŽ“'].map((e, i) => (
+          {['👧', '🧒', '🧑'].map((e, i) => (
             <span key={i} className="text-3xl select-none"
                   style={{ transform: `rotate(${8 - i * 3}deg)`, marginLeft: -5 }}>{e}</span>
           ))}
@@ -93,11 +93,11 @@ export default function SplashScreen({ onStart }: Props) {
           border: `1px solid ${BLUE}66`,
         }}
       >
-        âš”ï¸ Start Game
+        ⚔️ Start Game
       </button>
 
       <p className="z-10 mt-4 text-xs text-gray-600 tracking-widest uppercase">
-        2 players Â· single screen Â· all ages
+        2 players · single screen · all ages
       </p>
 
       <footer className="absolute bottom-4 w-full text-center text-xs text-gray-700 z-10">
